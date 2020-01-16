@@ -1,0 +1,29 @@
+{
+  "name": "VendingMachine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server",
+    "lite": "lite-server",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.0.2",
+    "lite-server": "^2.5.4",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "@types/knockout": "^3.4.66",
+    "bootstrap": "^3.4.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.4.1",
+    "knockout": "^3.5.1",
+    "requirejs": "^2.3.6"
+  }
+}

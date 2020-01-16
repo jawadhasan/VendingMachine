@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./src/styles/site.css">
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
+
+    <!-- Libs -->
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><span data-bind="text: appName"></span></a>
+              </div>
+          
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#sights">Sights</a></li>
+                  <li><a href="#sports">Sports</a></li>
+                  <li><a href="#activities">Activites</a></li>
+                  <li><a href="#contact-us">Contact Us</a></li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+    </header>
+
+    <!-- Content | Middle-Section-->
+    <div>
+        <h1>Content Goes Here1</h1>
+    </div>
+
+    <!-- Footer -->
+    <footer class="container-fluid">   
+        <!-- containerless syntax : example: options inside selectbox-->
+        <h6>Version: <!--ko text: appVersion--><!--/ko--></h6> 
+    </footer>
+    <script type="text/javascript" src="node_modules/knockout/build/output/knockout-latest.js"></script>
+    <script type="text/javascript" src="node_modules/requirejs/require.js"></script>
+
+<script>
+        requirejs(['dist/demoApp'], function(appModule){ 
+            
+        let demoApp = new appModule.DemoApp();
+        demoApp.appName = "Demo Application";
+        demoApp.appVersion = "1.0.0";
+
+        console.log(`App: ${demoApp.appName} - Version: ${demoApp.appVersion}  is loaded`);
+        ko.applyBindings(demoApp);
+    });
+</script>
+
+</body>
+
+
+</html>
