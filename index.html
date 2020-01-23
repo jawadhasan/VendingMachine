@@ -76,7 +76,7 @@
         </h4>
       
         <div data-bind="foreach: machine.acceptedCoins">
-          <img data-bind="attr: {src: getImageUrl(), alt: value}, click: $parent.machine.acceptCoin" />
+          <img class="coin" data-bind="attr: {src: getImageUrl(), alt: value}, click: $parent.machine.acceptCoin" />
         </div>
 
         <h3 data-bind="with: machine.selectedCell">
