@@ -54,8 +54,8 @@
 
       <div class="col-md-8 machine" data-bind="foreach: machine.cells">
         
-        <!-- Each cell should take one-third of the available width -->
-        <div class="col-md-4 cell">
+        <!-- Each cell should take one-third of the available width databind cell??-->
+        <div class="col-md-4 cell" data-bind="click: $parent.machine.select, css:{selected: $parent.machine.selectedCell().product === $data.product, sold: sold}">
 
           <div class="col-md-6 image">
             <img data-bind="attr: {src: product.category.getImageUrl(), alt: product.category.name}" />
@@ -70,21 +70,29 @@
 
       </div>
 
-
       <div class="col-md-4">
         <h4>Paid: $
           <span data-bind="text:machine.paid">total</span>
         </h4>
-
-        <!-- <button class="btn btn-primary" data-bind="click: machine.testcoin" >Insert Quarter</button> -->
+      
         <div data-bind="foreach: machine.acceptedCoins">
           <img data-bind="attr: {src: getImageUrl(), alt: value}, click: $parent.machine.acceptCoin" />
         </div>
 
-      </div>
+        <h3 data-bind="with: machine.selectedCell">
+          <div data-bind="text: product.name"></div>
+              <div>
+                  $ 
+                  <span data-bind="text: product.price"></span> 
+              </div>    
+          </div>          
+      </h3>
 
-    </div>
+        <button class="btn btn-primary payButton" data-bind="enable: machine.canPay, click: machine.pay">Pay</button>
+
+      </div> 
   </div>
+ 
 
   <!-- Footer -->
   <footer class="container-fluid">
@@ -103,9 +111,6 @@
       let demoApp = new appModule.DemoApp();
       demoApp.appName = "Vending-Machine Demo Application";
       demoApp.appVersion = "1.0.0";
-      
-      
-     
 
       console.log(`App: ${demoApp.appName} - Version: ${demoApp.appVersion}  is loaded`); 
       ko.applyBindings(demoApp);

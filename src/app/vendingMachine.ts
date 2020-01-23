@@ -1,5 +1,5 @@
-import { Quarter } from "./coin";
-import { CocaCola } from "./product";
+import { Quarter, Dime, Half, Dollar } from "./coin";
+import { CocaCola, Product, Initial } from "./product";
 import { ProductFactory } from "./productFactory";
 
 
@@ -14,7 +14,7 @@ export class Cell{
 
     //When instentiated a cell object, the cell should be tied to a product
     //we can use constructor to make passing of product compulsary
-    constructor(public product: CocaCola){        
+    constructor(public product: Product){        
     }
 
     //the cell object also has to contain a certain stock of the product, 
@@ -31,19 +31,33 @@ export class VendingMachine{
     //we, we have to keep track of total
     private paid = ko.observable(0);
 
-    //lets add a [cells] field to the vending machine
-    //it is ObservableArray
+    selectedCell = ko.observable(new Cell(new Initial()));
+    canPay = ko.pureComputed(()=> this.paid() - this.selectedCell().product.price >= 0);
+    select = (cell: Cell): void => {
+        cell.sold(false);
+        this.selectedCell(cell);
+    }
+    pay = ():void => {
+        
+        if(this.selectedCell().stock() < 1){
+            alert("sorry, we're out of them!");
+            return;
+        }        
+        let currentPayed = this.paid();
+        this.paid(Math.round(((currentPayed - this.selectedCell().product.price) * 100))/100);
+        let currentStock = this.selectedCell().stock();
+        this.selectedCell().stock(currentStock-1);
+        this.selectedCell().sold(true);
+    }
+
+    //lets add a [cells] field to the vending machine,it is ObservableArray
     cells = ko.observableArray();
-
-
+    
     //I want this to be a write-only property, so I can only use the setter from outside the class    
     set size(givenSize: VendingMachineSize){
 
         //first  I'll clear the cell's Observable array to make sure it's empty
         this.cells([]);
-
-        //a for-loop
-
         for (let index = 0; index < givenSize; index++) {
 
             //we might change getProduct method later
@@ -55,7 +69,7 @@ export class VendingMachine{
 
     //this is not observableArray, coz we dont need that as we will read this array only in startup, 
     //so we are not going to update this array later, hence not making it observableArray.
-    acceptedCoins: Quarter[] = [new Quarter()];
+    acceptedCoins: Quarter[] = [new Quarter(), new Dime(), new Half(), new Dollar()];
 
     acceptCoin = (coin:Quarter) : void => {     
        let oldTotal = this.paid();
