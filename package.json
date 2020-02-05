@@ -14,10 +14,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "concurrently": "^5.0.2",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
     "lite-server": "^2.5.4",
     "typescript": "^3.7.4"

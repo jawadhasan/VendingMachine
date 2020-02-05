@@ -54,16 +54,22 @@ let paths = {
 
 //first we will need a reference to gulp itself
 var gulp = require('gulp'); //by default its automatically looks in the node_modules
-var gutil = require('gulp-util'); // also get a reference to gutil to later use it 
-var del = require('del');
+var gutil = require('gulp-util'); // also get a reference to gutil to later use it for logging purposes
+var del = require('del'); //to cleanup the dest folder
+var cleanCSS = require('gulp-clean-css');//for css minification
+var uglify = require('gulp-uglify'); //for js minification
+var concat = require('gulp-concat');
 
-var ts = require('gulp-typescript');
-var tsProject = ts.createProject('tsconfig.json');
+var ts = require('gulp-typescript'); //for typescript
+var tsProject = ts.createProject('tsconfig.json');//this will load the tsconfig.json file
+
+var sourcemaps = require('gulp-sourcemaps'); //to copy over the source-maps
+var babel = require('gulp-babel');
 
 
 function styles(){
     return gulp.src(paths.styles.src)
-            //.pipe(cleanCSS())
+            .pipe(cleanCSS())
             .pipe(gulp.dest(paths.styles.dest));
 }
 
@@ -92,8 +98,14 @@ function other(){
 
 
 function tsBuild(){
+    gutil.log('Building TypeScript');
     return gulp.src('src/app/*.ts')
-    .pipe(tsProject())
+    //  .pipe(sourcemaps.init())
+     .pipe(tsProject())  
+     .pipe(babel())  
+     .pipe(uglify())
+    //  .pipe(concat('demoApp.js'))
+    // .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./dist/app'));
 }
 
@@ -108,10 +120,6 @@ function watch() {
     gulp.watch(paths.styles.src, styles);
     gulp.watch('src/app/*.ts',tsBuild)
 }
-
-
-
-
 
 
 /*
