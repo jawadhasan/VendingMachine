@@ -1,6 +1,6 @@
 export abstract class ProductCategory{
     
-    protected imgPath = "src/img/";
+    protected imgPath = "img/";
     name:string="";
     abstract getImageUrl(): string;
 }

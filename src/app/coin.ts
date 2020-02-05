@@ -16,7 +16,7 @@ export class Quarter extends Coin{
     }
 
     getImageUrl (): string {
-        return "src/img/Quarter.png";
+        return "img/Quarter.png";
     }
 }
 
@@ -26,7 +26,7 @@ export class Dime extends Coin {
         super(.10);
     }
     getImageUrl (): string {
-        return "src/img/Dime.png";
+        return "img/Dime.png";
     }
 }
 
@@ -35,7 +35,7 @@ export class Half extends Coin{
         super(.5);
     }
     getImageUrl(): string {
-        return "src/img/Half.png";
+        return "img/Half.png";
     }
 }
 
@@ -45,6 +45,6 @@ export class Dollar extends Coin {
         super(1);
     }
     getImageUrl(): string {
-        return "src/img/Dollar.jpg";
+        return "img/Dollar.jpg";
     }
 }

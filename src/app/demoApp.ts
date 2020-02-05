@@ -8,6 +8,7 @@ export class DemoApp{
 
     constructor(){
         this.machine.size = VendingMachineSize.medium;
+       
     }
   
 }
