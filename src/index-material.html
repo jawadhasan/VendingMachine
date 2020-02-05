@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="styles/bootstrap.css">
+  <link rel="stylesheet" href="styles/site.css">
+  <link rel="stylesheet" href="styles/font-awesome.min.css">
+
+  <!-- Libs -->
+  <script type="text/javascript" src="scripts/jquery.js"></script>
+  <script type="text/javascript" src="scripts/bootstrap.js"></script>
+
+  <!-- Uses a transparent header that draws on top of the layout's background -->
+  <style>
+    .demo-layout-transparent {
+      /* background: url('../assets/demos/transparent.jpg') center / cover; */
+    }
+
+    .demo-layout-transparent .mdl-layout__header,
+    .demo-layout-transparent .mdl-layout__drawer-button {
+      /* This background is dark, so we set text to white. Use 87% black instead if
+       your background is light. */
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Vending Machine Simulation</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="#sights">Sights</a>
+          <a class="mdl-navigation__link" href="#sports">Sports</a>
+          <a class="mdl-navigation__link" href="#activities">Activites</a>
+          <a class="mdl-navigation__link" href="#contact-us">Contact Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Vending Machine</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="#sights">Sights</a>
+        <a class="mdl-navigation__link" href="#sports">Sports</a>
+        <a class="mdl-navigation__link" href="#activities">Activites</a>
+        <a class="mdl-navigation__link" href="#contact-us">Contact Us</a>
+      </nav>
+    </div>
+
+    <main class="mdl-layout__content">
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet machine">
+
+          <div data-bind="foreach: machine.cells">
+
+
+            <div class="col col-md-4">
+              <!-- Each cell should take one-third of the available width databind cell??-->
+              <div
+                data-bind="click: $parent.machine.select, css:{selected: $parent.machine.selectedCell().product === $data.product, sold: sold}">
+
+                <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                  <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text" data-bind="text: product.name"></h2>
+                  </div>
+
+                  <div class="mdl-card__supporting-text">
+
+                    <div class="row">
+                      <div class="col-md-6 image">
+                        <img data-bind="attr: {src: product.category.getImageUrl(), alt: product.category.name}" />
+                      </div>
+                      <div class="col-md-6 productInfo">
+                        <p data-bind="text: stock"></p>
+                        <p data-bind="text: '$ ' + product.price"></p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
+
+          <h4>Paid: $
+            <span data-bind="text:machine.paid">total</span>
+          </h4>
+
+          <div data-bind="foreach: machine.acceptedCoins">
+            <img class="coin" data-bind="attr: {src: getImageUrl(), alt: value}, click: $parent.machine.acceptCoin" />
+          </div>
+
+          <h3 data-bind="with: machine.selectedCell">
+            <div data-bind="text: product.name"></div>
+            <div>
+              $
+              <span data-bind="text: product.price"></span>
+            </div>
+          </h3>
+
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            data-bind="enable: machine.canPay, click: machine.pay">
+            Pay
+          </button>
+        </div>
+
+      </div>
+
+
+    </main>
+
+    <footer class="mdl-mini-footer">
+      <div class="mdl-mini-footer__left-section">
+        <div class="mdl-logo">Title</div>
+        <ul class="mdl-mini-footer__link-list">
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Privacy & Terms</a></li>
+        </ul>
+      </div>
+      <div class="mdl-mini-footer__right-section">
+        <!-- containerless syntax : example: options inside selectbox-->
+        <div>Version:
+          <!--ko text: appVersion-->
+          <!--/ko-->
+
+          <i class="fa fa-copyright">&nbsp;&nbsp;http://www.hexquote.com</i>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <script type="text/javascript" src="scripts/knockout-latest.js"></script>
+  <script type="text/javascript" src="scripts/require.js"></script>
+
+
+
+  <!-- Meterial design lite  -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+  <script>
+    requirejs(['app/demoApp'], function (appModule) {
+
+      let demoApp = new appModule.DemoApp();
+      demoApp.appName = "Vending-Machine Demo Application";
+      demoApp.appVersion = "1.0.0";
+      console.log(`App: ${demoApp.appName} - Version: ${demoApp.appVersion}  is loaded`);
+      ko.applyBindings(demoApp);
+    });
+  </script>
+
+</body>
+
+
+</html>
