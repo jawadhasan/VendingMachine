@@ -6,17 +6,17 @@ color: #ddd;
 padding: 20px;
 text-align: center;
 
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+position: absolute;
+bottom: 0;
+width: 100%;
   
 }
 
 /* bootstrap overrides */
-/* padding top/bottom = 30, left/right = 15 */
+
 .navbar{
     margin-bottom: 0px;
-    padding: 30px 15px;
+    padding: 30px 15px; /* padding top/bottom = 30, left/right = 15 */
 }
 .navbar-inverse .navbar-nav>li>a{
     color: #bbb;
