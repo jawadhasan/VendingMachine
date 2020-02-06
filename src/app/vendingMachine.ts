@@ -8,8 +8,8 @@ export enum VendingMachineSize {
     small = 6,
     medium = 9,
     large = 12,
-    extra = 16,
-    extraExtra=32
+    extra = 15,
+    extraExtra=33
 }
 
 export class Cell {
