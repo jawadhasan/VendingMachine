@@ -6,7 +6,7 @@ export class ProductFactory{
         
         //you can also place logic to fetch products from a server, for instance.
 
-        let random = Math.floor(Math.random() * 11);
+        let random = Math.floor(Math.random() * 15);
         
         switch(random){
             case 0 : return new CocaCola();
@@ -20,6 +20,11 @@ export class ProductFactory{
             case 8: return new Gummies();
             case 9: return new Hersey();
             case 10: return new MilkyWay();
+            case 11: return new Cheddar();
+            case 12: return new Mints();
+            case 13: return new Gummies();
+            case 14: return new Hersey();
+            case 15: return new MilkyWay();
             default: return new CocaCola();
         }
     }

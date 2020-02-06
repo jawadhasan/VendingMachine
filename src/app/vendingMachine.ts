@@ -7,7 +7,8 @@ import { ProductFactory } from "./productFactory";
 export enum VendingMachineSize {
     small = 6,
     medium = 9,
-    large = 12
+    large = 12,
+    extra = 16
 }
 
 export class Cell {

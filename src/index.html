@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
+  <base href="/">
   <title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -13,63 +15,57 @@
 
   <!-- Libs -->
   <script type="text/javascript" src="scripts/jquery.js"></script>
-  <script type="text/javascript" src="scripts/bootstrap.js"></script>
+  <!-- <script type="text/javascript" src="scripts/bootstrap.js"></script> -->
+  <script type="text/javascript" src="scripts/bootstrap.bundle.js"></script>
 </head>
 
 <body>
 
-  <!-- Header -->
-  <header>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#"><span data-bind="text: appName"></span></a>
-        </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#"><span data-bind="text: appName"></span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><a class="nav-link" href="#sights">Sights </a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#sports">Sports </a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#activities">Activites </a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#contact-us">Contact Us </a> </li>
+      </ul>
+    </div>
+  </nav>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#sights">Sights</a></li>
-            <li><a href="#sports">Sports</a></li>
-            <li><a href="#activities">Activites</a></li>
-            <li><a href="#contact-us">Contact Us</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-  </header>
-
-  <!-- Content | Middle-Section-->
+  <!-- Page Contents -->
   <div class="container-fluid">
-    <h2>Vending Machine Simulation</h2>
-
     <div class="row">
 
-      <!-- Machine & Product Icons -->
-      <div class="col-md-8 machine" data-bind="foreach: machine.cells">
+      <!-- Machine and Products -->
+      <div class="col-md-8">
 
-        <!-- Each cell should take one-third of the available width databind cell??-->
-        <div class="col-md-4 cell"
-          data-bind="click: $parent.machine.select, css:{selected: $parent.machine.selectedCell().product === $data.product, sold: sold}">
+        <div class="scroll-div">
+          <!-- Machine & Product Icons -->
+          <div data-bind="foreach: machine.cells">
 
-          <div class="col-md-6 image">
-            <img data-bind="attr: {src: product.category.getImageUrl(), alt: product.category.name}" />
+            <!-- Each cell should take one-third of the available width databind cell??-->
+            <div class="col-md-4 cell"
+              data-bind="click: $parent.machine.select, css:{selected: $parent.machine.selectedCell().product === $data.product, sold: sold}">
+              <div class="row">
+                <div class="col-md-6 image">
+                  <img data-bind="attr: {src: product.category.getImageUrl(), alt: product.category.name}" />
+                </div>
+                <div class="col-md-6 productInfo">
+                  <div data-bind="text: product.name"></div>
+                  <h4 data-bind="text: stock"></h4>
+                  <h3 data-bind="text: '$ ' + product.price"></h3>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div class="col-md-6 productInfo">
-            <div data-bind="text: product.name"></div>
-            <h4 data-bind="text: stock"></h4>
-            <h3 data-bind="text: '$ ' + product.price"></h3>
-          </div>
-
         </div>
 
       </div>
@@ -98,15 +94,18 @@
     </div>
   </div>
 
-
   <!-- Footer -->
-  <footer class="container-fluid">
+  <footer class="bg-dark fixed-bottom">
     <!-- containerless syntax : example: options inside selectbox-->
     <h6>Version:
       <!--ko text: appVersion-->
       <!--/ko-->
     </h6>
   </footer>
+
+
+
+  <!-- Scripts -->
   <script type="text/javascript" src="scripts/knockout-latest.js"></script>
   <script type="text/javascript" src="scripts/require.js"></script>
 

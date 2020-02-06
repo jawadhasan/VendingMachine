@@ -18,7 +18,8 @@ let paths = {
     scripts: {
         src:[
             'node_modules/jquery/dist/jquery.js',
-            'node_modules/bootstrap/dist/js/bootstrap.js',
+            // 'node_modules/bootstrap/dist/js/bootstrap.js',
+            'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
             'node_modules/knockout/build/output/knockout-latest.js',
             'node_modules/requirejs/require.js',
 
