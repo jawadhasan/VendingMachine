@@ -30,8 +30,8 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active"><a class="nav-link" href="#sights">Sights </a> </li>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link active" href="#sights">Sights </a> </li>
         <li class="nav-item"> <a class="nav-link" href="#sports">Sports </a> </li>
         <li class="nav-item"> <a class="nav-link" href="#activities">Activites </a> </li>
         <li class="nav-item"> <a class="nav-link" href="#contact-us">Contact Us </a> </li>
@@ -41,18 +41,20 @@
 
   <!-- Page Contents -->
   <div class="container-fluid">
+
     <div class="row">
 
       <!-- Machine and Products -->
-      <div class="col-md-8">
+      <div id="left" class="col-md-8">
 
-        <div class="scroll-div">
+        <div>
           <!-- Machine & Product Icons -->
           <div data-bind="foreach: machine.cells">
 
             <!-- Each cell should take one-third of the available width databind cell??-->
-            <div class="col-md-4 cell"
+            <div class="col-md-4 cell card"
               data-bind="click: $parent.machine.select, css:{selected: $parent.machine.selectedCell().product === $data.product, sold: sold}">
+
               <div class="row">
                 <div class="col-md-6 image">
                   <img data-bind="attr: {src: product.category.getImageUrl(), alt: product.category.name}" />
@@ -71,7 +73,7 @@
       </div>
 
       <!-- Payment Area -->
-      <div class="col-md-4">
+      <div id="right" class="col-md-4">
 
         <h4>Paid: $
           <span data-bind="text:machine.paid">total</span>
@@ -119,6 +121,12 @@
       console.log(`App: ${demoApp.appName} - Version: ${demoApp.appVersion}  is loaded`);
       ko.applyBindings(demoApp);
     });
+
+    $('.navbar-nav .nav-link').click(function () {
+      $('.navbar-nav .nav-link').removeClass('active');
+      $(this).addClass('active');
+    });
+
   </script>
 
 </body>
