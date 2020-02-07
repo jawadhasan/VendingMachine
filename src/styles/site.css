@@ -50,6 +50,10 @@ text-align: center;
     padding-left: 20px;
 }
 
+.coin:hover{
+    outline: 1px solid red;
+    cursor: pointer;
+    }
 .payButton {
     width: 100px;
     height: 60px;
@@ -58,6 +62,7 @@ text-align: center;
     margin-left: 15px;
 }
 
+/* animation of products */
 .selected .image {
     animation-name: rotate;
     animation-duration: 2s;
@@ -77,8 +82,5 @@ text-align: center;
     99% { transform: translateY(600px) rotate(120deg); }
 }
 
-.coin:hover{
-outline: 1px solid red;
-cursor: pointer;
-}
+
 /* End - VendingMachine Styles */

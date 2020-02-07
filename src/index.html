@@ -95,12 +95,12 @@
   </div>
 
   <!-- Footer -->
-  <footer class="navbar-dark bg-primary">
+  <footer class="d-flex justify-content-center ">
     <!-- containerless syntax : example: options inside selectbox-->
-    <h6>Version:
+    <h5>Version:
       <!--ko text: appVersion-->
       <!--/ko-->
-    </h6>
+    </h5>
   </footer>
 
 
@@ -119,6 +119,7 @@
       ko.applyBindings(demoApp);
     });
 
+    //Acitve Link, Highlighting
     $('.navbar-nav .nav-link').click(function () {
       $('.navbar-nav .nav-link').removeClass('active');
       $(this).addClass('active');
