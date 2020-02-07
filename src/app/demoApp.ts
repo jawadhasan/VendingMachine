@@ -7,7 +7,7 @@ export class DemoApp{
     machine: VendingMachine = new VendingMachine();
 
     constructor(){
-        this.machine.size = VendingMachineSize.large;
+        this.machine.size = VendingMachineSize.extraExtra;
        
     }
   

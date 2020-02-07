@@ -1,24 +1,37 @@
-  
+
   #left {
     height:100%;
     position: absolute;
     top: 60px;
     bottom: 0px;
-    left: 0;  
-    overflow-y: scroll; 
+    left: 0;
+    overflow-y: scroll;
   }
-  
-  #right {  
+
+  #right {
     background-color: #f1c40f;
     position: absolute;
     /* top: 60px;     */
-    right: 0;    
+    right: 0;
   }
 
+  
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    /* font-family: "Helvetica Neue", Arial, sans-serif; */
+  }
+  
 footer{
-/* color: #ddd; */
-
-text-align: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    color: white;
+    text-align: center;
 }
 
 
@@ -26,7 +39,7 @@ text-align: center;
 @media (min-width: 768px) {
     .cell {
         min-height: 110px;
-        max-height: 110px;     
+        max-height: 110px;
         float: left;
     }
   }
