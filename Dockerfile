@@ -17,4 +17,4 @@ CMD ["nginx", "-g", "daemon off;"]
 #VOLUME /var/cache/nginx 
 # docker build -t vmachine .
 # docker run -p 8080:80 vmachine
-#docker push hexquote/vmachine
+#docker push jawadhasanshani/vmachine
