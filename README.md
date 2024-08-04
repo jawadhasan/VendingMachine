@@ -1,13 +1,14 @@
 # demo Vending Machine
-demo Vending Machine
 
->>npm install
->>npm run start
+Typescript Example - Vending Machine Model
 
+### Setup
 
+`npm install`    
+`npm run start`    
 
-
-===================
-1. open terminal>>gulp watch
-2. another terminal>> npm run dev
-3. If needed, we can run default task:   >>gulp
+### Gulp Watch 
+    
+1st terminal >> `gulp watch`    
+2nd terminal >> `npm run dev`    
+If needed, we can run default task:   `gulp`    
